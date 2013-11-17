@@ -1,0 +1,49 @@
+html, body {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: white;
+}
+
+.mainimg {
+  margin-top: 50px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #555555;
+}
+i.hugeicon {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  font-size: 150px;
+  color: #bbb;
+}
+
+.header {
+  background: #333;
+  padding-top: 20px;
+  -webkit-box-shadow: 0 0 10px #111;
+  -moz-box-shadow: 0 0 10px #111;
+  box-shadow: 0 0 10px #111;
+  padding-bottom: 20px;
+}
+
+.header hr {
+  border-collapse: #444;
+}
+
+.header h3 {
+  text-shadow: 2px 0px 4px black;
+}
+
+.clearfix:before,
+.clearfix:after {
+  content " ";
+  display: table;
+}
+
+.clearfix:after {
+  clear: both;
+}

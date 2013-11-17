@@ -1,0 +1,22 @@
+- companyName = (typeof companyName != 'undefined') ? companyName : 'curapps'
+- logoUrl = (typeof logoUrl != 'undefined') ? logoUrl : ''
+- cssUrl = (typeof cssUrl != 'undefined') ? cssUrl : ''
+- host = (typeof host != 'undefined') ? host : 'This site'
+!!!
+html
+  head
+    title #{companyName} - #{host} is down for maintenance
+    link(rel='stylesheet', href='//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css')
+    link(rel='stylesheet', href=cssUrl)
+  body
+    .header
+      .container
+        .row
+          h3(style='text-align: center;').pull-left #{companyName}
+          h3(style='text-align: center;').pull-right mapps
+        .clearfix
+    .mainimg
+      img(src=logoUrl)
+      h3 #{host} is down for maintenance <i class="fa-spin fa fa-cog"></i>
+      i.hugeicon.fa.fa-ambulance
+      h4 Please try again later.
