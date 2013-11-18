@@ -158,7 +158,7 @@ program
   .command('stop <name>')
   .description('Stops an app')
   .action(function(app) {
-
+    
   })
 
 program
