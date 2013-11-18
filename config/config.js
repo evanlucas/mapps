@@ -3,7 +3,7 @@ var path = require('path')
 
 module.exports = {
   development: {
-    root: '/Users/elucas/dev/code/mapps_data',
+    root: root,
     user: 'apps',
     appsPath: 'apps',
     logsPath: 'logs',
