@@ -5,10 +5,13 @@ var program     = require('commander')
   , inquirer    = require('inquirer')
   , Table       = require('cli-table')
 
+var help = true
+
 program
   .command('serve')
   .description('Starts the mapps server')
   .action(function(k) {
+    help = false
     if (program.daemon) {
       mapps.daemonize(program.workers)
     } else {
@@ -20,27 +23,28 @@ program
   .command('status')
   .description('Checks the status of the mapps server')
   .action(function() {
-
+    help = false
   })
 
 program
   .command('reboot')
   .description('Stops the server and restarts it')
   .action(function() {
-
+    help = false
   })
 
 program
   .command('unload')
   .description('Stops the server and prevents it from being automatically loaded')
   .action(function() {
-
+    help = false
   })
 
 program
   .command('create-user')
   .description('Create a new user')
   .action(function() {
+    help = false
     var q = [
       {type: 'input', name: 'name', message: 'Please enter the user\'s name'},
       {type: 'input', name: 'email', message: 'Please enter the user\'s email'}
@@ -61,6 +65,7 @@ program
   .command('add-key')
   .description('Adds an API key')
   .action(function() {
+    help = false
     var q = [
       {type: 'input', name: 'key', message: 'Please enter the API key'},
       {type: 'input', name: 'name', message: 'Please enter the user\'s name'},
@@ -82,6 +87,7 @@ program
   .command('list-users')
   .description('Lists all users')
   .action(function() {
+    help = false
     mapps.listUsers(function(err, users) {
       if (err) {
         mapps.log.error('list-users', 'Error listing users', err)
@@ -102,6 +108,7 @@ program
   .command('rm-key <key>')
   .description('Removes an API key')
   .action(function(k) {
+    help = false
     mapps.removeUserWithKey(k, function(err) {
       if (err) {
         mapps.log.error('rm-key', 'Error removing user with key', err)
@@ -115,6 +122,7 @@ program
   .command('list [name|label]')
   .description('List registered apps')
   .action(function(nl) {
+    help = false
     mapps.listApps(nl, function(err, apps) {
       if (err) {
         mapps.log.error('list', 'Error listing app', err)
@@ -158,21 +166,21 @@ program
   .command('stop <name>')
   .description('Stops an app')
   .action(function(app) {
-    
+    help = false
   })
 
 program
   .command('start <name>')
   .description('Starts an app')
   .action(function(app) {
-
+    help = false
   })
 
 program
   .command('restart <name>')
   .description('Restarts an app')
   .action(function(app) {
-
+    help = false
   })
 
 
@@ -187,3 +195,9 @@ program
 
 if (program.verbose) mapps.log.level = 'verbose'
 if (program.quiet) mapps.log.level = 'error'
+
+if (program.args.length === 0 && program.daemon) {
+  mapps.daemonize(program.workers)
+} else if (program.args.length === 0) {
+  program.help()
+}
