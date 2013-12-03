@@ -1,22 +1,37 @@
 - companyName = (typeof companyName != 'undefined') ? companyName : 'curapps'
 - logoUrl = (typeof logoUrl != 'undefined') ? logoUrl : ''
-- cssUrl = (typeof cssUrl != 'undefined') ? cssUrl : ''
 - host = (typeof host != 'undefined') ? host : 'This site'
+- supportEmail = (typeof supportEmail != 'undefined') ? supportEmail : ''
 !!!
 html
   head
     title #{companyName} - #{host} is down for maintenance
+    link(rel='stylesheet', href='//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css')
     link(rel='stylesheet', href='//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css')
-    link(rel='stylesheet', href=cssUrl)
+    style
+      html, body {
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: white;
+      }
+      .mainimg {
+        margin-top: 50px;
+      }
+      i.hugeicon {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        font-size: 150px;
+        color: #BBB;
+      }
   body
-    .header
-      .container
-        .row
-          h3(style='text-align: center;').pull-left #{companyName}
-          h3(style='text-align: center;').pull-right mapps
-        .clearfix
     .mainimg
       img(src=logoUrl)
       h3 #{host} is down for maintenance <i class="fa-spin fa fa-cog"></i>
       i.hugeicon.fa.fa-ambulance
       h4 Please try again later.
+      - if (supportEmail && supportEmail !== '')
+        strong
+          p Questions? Contact <a href="mailto:#{supportEmail}">#{supportEmail}</a>
